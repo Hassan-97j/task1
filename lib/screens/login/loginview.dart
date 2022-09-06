@@ -97,7 +97,6 @@ class SignInView extends StatelessWidget with BaseController {
                               .validate()) {
                             signInController.formKey.currentState!.save();
                             KeyboardUtil.hideKeyboard(context);
-                            signInController.saveToSharedPreferences();
                             Get.toNamed(PagesNames.homescreen);
                           }
                         },

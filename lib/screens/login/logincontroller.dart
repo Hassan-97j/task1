@@ -1,6 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task1/const/errorconst.dart';
 import 'package:task1/models/usermodel.dart';
 import 'package:task1/screens/posts/postcontroller.dart';
@@ -13,27 +14,6 @@ class SignInController extends GetxController {
   bool? remember = false;
   final List<String?> errors = [];
   List<Users> k = [];
-  late SharedPreferences sprefs;
-  String temp = '';
-
-  @override
-  void onInit() async {
-    super.onInit();
-    sprefs = await SharedPreferences.getInstance();
-  }
-
-  saveToSharedPreferences() async {
-    sprefs = await SharedPreferences.getInstance();
-    sprefs.setString("KEY_1", emailController.text.toString());
-    update();
-  }
-
-  showSavedValue() async {
-    sprefs = await SharedPreferences.getInstance();
-
-    temp = sprefs.getString("KEY_1").toString();
-    update();
-  }
 
 // bring error messages
   void addError({String? error}) {
@@ -95,6 +75,7 @@ class SignInController extends GetxController {
 //validate email
   usernameValidator(value) {
     print(Get.find<PostController>().userModels);
+
     var s = Get.find<PostController>()
         .userModels
         .where(
@@ -103,7 +84,7 @@ class SignInController extends GetxController {
               value.toString().toLowerCase(),
         )
         .toList();
-    if (s.length == 0) {
+    if (s.isEmpty) {
       addError(error: ErrorText.kusernameNullError);
       return "";
     }
