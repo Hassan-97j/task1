@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:task1/themes/colors/lightcolors.dart';
 
 class MyTheme {
@@ -42,19 +43,19 @@ class MyTheme {
     ////////////////
     //appbar theme
     appBarTheme: AppBarTheme(
-      color: LightColors.scaffoldColor,
+      backgroundColor: LightColors.primary,
       elevation: 0,
       iconTheme: IconThemeData(
-        color: LightColors.textcolor,
+        color: LightColors.scaffoldColor,
       ),
       titleTextStyle: TextStyle(
-        color: LightColors.textcolor,
+        color: LightColors.scaffoldColor,
         fontSize: 18,
       ),
     ),
     /////////////////////
     //text theme
-    // textTheme: GoogleFonts.varelaRoundTextTheme(),
+    textTheme: GoogleFonts.varelaRoundTextTheme(),
     //////////////////
     // input decoration theme
     inputDecorationTheme: InputDecorationTheme(
