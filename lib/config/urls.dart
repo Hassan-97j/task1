@@ -4,5 +4,5 @@ class Config {
   //post Url
   static String posturl = '/posts';
   //post Url
-  static String user = '/users';
+  static String userurl = '/users';
 }

@@ -59,15 +59,16 @@ class SignInView extends StatelessWidget with BaseController {
                   child: Column(
                     children: [
                       MyTextField(
-                        inputtype: TextInputType.emailAddress,
-                        onsaved: (newValue) =>
-                            signInController.email = newValue,
-                        onchanged: (value) {},
+                        textfieldctrlr: signInController.emailController,
+                        inputtype: TextInputType.name,
+                        // onsaved: (newValue) =>
+                        //     signInController.email = newValue,
+                        // onchanged: (value) {},
                         validation: (value) {
-                          return signInController.emailValidator(value);
+                          return signInController.usernameValidator(value);
                         },
-                        labeltext: 'Email',
-                        hinttext: 'Enter Email',
+                        labeltext: 'Username',
+                        hinttext: 'Enter Username',
                         icons: Icons.mail,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
@@ -76,9 +77,9 @@ class SignInView extends StatelessWidget with BaseController {
                         obscuretext: true,
                         onsaved: (newValue) =>
                             signInController.password = newValue,
-                        onchanged: (value) {
-                          signInController.onEmailChange(value);
-                        },
+                        // onchanged: (value) {
+                        //   signInController.onEmailChange(value);
+                        // },
                         validation: (value) {
                           return signInController.passwordValidator(value);
                         },
@@ -96,7 +97,7 @@ class SignInView extends StatelessWidget with BaseController {
                               .validate()) {
                             signInController.formKey.currentState!.save();
                             KeyboardUtil.hideKeyboard(context);
-
+                            signInController.saveToSharedPreferences();
                             Get.toNamed(PagesNames.homescreen);
                           }
                         },

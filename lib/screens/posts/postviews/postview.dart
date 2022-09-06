@@ -43,7 +43,7 @@ class HomeView extends StatelessWidget {
         body: TabBarView(
           children: [
             AllPosts(),
-            const Profile(),
+            Profile(),
           ],
         ),
       ),

@@ -16,6 +16,7 @@ class AllPosts extends StatelessWidget with BaseController {
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(24)),
         child: GetBuilder<PostController>(
           init: PostController(),
+          id: 'textId',
           initState: (_) {},
           builder: (_) => postController.isloading
               ? postController.postModels.isEmpty
@@ -23,14 +24,22 @@ class AllPosts extends StatelessWidget with BaseController {
                   : ListView.builder(
                       itemCount: postController.postModels.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text(
-                            postController.postModels[index].title,
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: getProportionateScreenWidth(12)),
+                          child: ListTile(
+                            title: Text(
+                              postController.postModels[index].title,
+                              style: TextStyle(
+                                  fontSize: getProportionateScreenWidth(22)),
+                            ),
+                            subtitle: Text(
+                              postController.postModels[index].body,
+                              style: TextStyle(
+                                  fontSize: getProportionateScreenWidth(14)),
+                            ),
+                            isThreeLine: true,
                           ),
-                          subtitle: Text(
-                            postController.postModels[index].body,
-                          ),
-                          isThreeLine: true,
                         );
                       },
                     )

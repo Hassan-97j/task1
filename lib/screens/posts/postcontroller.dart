@@ -1,39 +1,65 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+import 'dart:io';
+
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart' show get;
 import 'package:task1/config/urls.dart';
 import 'package:task1/models/postsmodel.dart';
+import 'package:task1/models/usermodel.dart';
 
 class PostController extends GetxController {
   // fetch
-  var myurl = Config.baseurl + Config.posturl;
+  var myposturl = Config.baseurl + Config.posturl;
+  var myuserurl = Config.baseurl + Config.userurl;
   List postModels = <Posts>[];
+  List userModels = <Users>[];
   var isloading = true;
   @override
   void onInit() {
-    fetchPostsData();
+    getPosts();
+    getUsers();
     super.onInit();
   }
 
-  Future fetchPostsData() async {
-    final response = await http.get(Uri.parse(myurl));
+  Future<void> getPosts() async {
+    final response = await get(Uri.parse(myposturl));
+    print("HttpStatus: waiting");
 
-    if (response.statusCode == 200) {
-      Posts posts = Posts.fromJson(jsonDecode(response.body));
-      print(posts);
-      postModels.add(
-        Posts(title: posts.title, body: posts.body),
-      );
-
-      isloading = false;
-      update();
-    } else {
-      Get.snackbar('Error Loading data!',
-          'Sever responded: ${response.statusCode}:${response.reasonPhrase.toString()}');
+    switch (response.statusCode) {
+      case HttpStatus.ok:
+        
+        print("HttpStatus: OK");
+        final jsonBody = jsonDecode(response.body);
+        if (jsonBody is List) {
+          postModels =
+              jsonBody.map((e) => Posts.fromJson(e)).toList().cast<Posts>();
+        }
+        break;
+      default:
     }
-    update();
+
+    update(['textId']); //GetX için
+  }
+
+  Future<void> getUsers() async {
+    final response = await get(Uri.parse(myuserurl));
+    print("HttpStatus: waiting");
+
+    switch (response.statusCode) {
+      case HttpStatus.ok:
+        print("HttpStatus: OK");
+        final jsonBody = jsonDecode(response.body);
+        if (jsonBody is List) {
+          userModels =
+              jsonBody.map((e) => Users.fromJson(e)).toList().cast<Users>();
+        }
+        break;
+      default:
+    }
+
+    update(['textId']); //GetX için
   }
 
   @override

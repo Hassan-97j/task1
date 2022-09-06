@@ -1,13 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:task1/const/errorconst.dart';
+import 'package:task1/models/usermodel.dart';
+import 'package:task1/screens/posts/postcontroller.dart';
 
 class SignInController extends GetxController {
+  TextEditingController emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   String? email;
   String? password;
   bool? remember = false;
   final List<String?> errors = [];
+  List<Users> k = [];
+  late SharedPreferences sprefs;
+  String temp = '';
+
+  @override
+  void onInit() async {
+    super.onInit();
+    sprefs = await SharedPreferences.getInstance();
+  }
+
+  saveToSharedPreferences() async {
+    sprefs = await SharedPreferences.getInstance();
+    sprefs.setString("KEY_1", emailController.text.toString());
+    update();
+  }
+
+  showSavedValue() async {
+    sprefs = await SharedPreferences.getInstance();
+
+    temp = sprefs.getString("KEY_1").toString();
+    update();
+  }
 
 // bring error messages
   void addError({String? error}) {
@@ -56,25 +82,32 @@ class SignInController extends GetxController {
   }
 
 // on changing email field
-  onEmailChange(value) {
-    if (value.isNotEmpty) {
-      removeError(error: ErrorText.kEmailNullError);
-    } else if (!GetUtils.isEmail(value)) {
-      removeError(error: ErrorText.kInvalidEmailError);
-    }
-    update();
-    return;
-  }
+  // onEmailChange(value) {
+  //   if (value.isNotEmpty) {
+  //     removeError(error: ErrorText.kEmailNullError);
+  //   } else if (!GetUtils.isEmail(value)) {
+  //     removeError(error: ErrorText.kInvalidEmailError);
+  //   }
+  //   update();
+  //   return;
+  // }
 
 //validate email
-  emailValidator(value) {
-    if (value!.isEmpty) {
-      addError(error: ErrorText.kEmailNullError);
-      return "";
-    } else if (!GetUtils.isEmail(value)) {
-      addError(error: ErrorText.kInvalidEmailError);
+  usernameValidator(value) {
+    print(Get.find<PostController>().userModels);
+    var s = Get.find<PostController>()
+        .userModels
+        .where(
+          (element) =>
+              element.username.toString().toLowerCase() ==
+              value.toString().toLowerCase(),
+        )
+        .toList();
+    if (s.length == 0) {
+      addError(error: ErrorText.kusernameNullError);
       return "";
     }
+    print(s);
     update();
     return;
   }

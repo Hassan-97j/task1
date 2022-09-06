@@ -1,6 +1,6 @@
 class ErrorText {
-  static const String kEmailNullError = "Please Enter your email";
-  static const String kInvalidEmailError = "Please Enter Valid Email";
+  static const String kusernameNullError = "Please Enter correct username";
+  static const String kInvalidEmailError = "Please Enter Valid username";
   static const String kPassNullError = "Please Enter your password";
   static const String kShortPassError = "Password is too short";
   static const String kMatchPassError = "Passwords don't match";
