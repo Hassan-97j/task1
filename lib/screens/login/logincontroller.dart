@@ -41,7 +41,7 @@ class SignInController extends GetxController {
   onPasswordChange(value) {
     if (value.isNotEmpty) {
       removeError(error: ErrorText.kPassNullError);
-    } else if (value.length >= 8) {
+    } else if (value.length >= 5) {
       removeError(error: ErrorText.kShortPassError);
     }
     update();
@@ -53,7 +53,7 @@ class SignInController extends GetxController {
     if (value!.isEmpty) {
       addError(error: ErrorText.kPassNullError);
       return "";
-    } else if (value.length < 8) {
+    } else if (value.length < 5) {
       addError(error: ErrorText.kShortPassError);
       return "";
     }
@@ -61,16 +61,14 @@ class SignInController extends GetxController {
     return;
   }
 
-// on changing email field
-  // onEmailChange(value) {
-  //   if (value.isNotEmpty) {
-  //     removeError(error: ErrorText.kEmailNullError);
-  //   } else if (!GetUtils.isEmail(value)) {
-  //     removeError(error: ErrorText.kInvalidEmailError);
-  //   }
-  //   update();
-  //   return;
-  // }
+//on changing email field
+  onEmailChange(value) {
+    if (value.isNotEmpty) {
+      removeError(error: ErrorText.kusernameNullError);
+    }
+    update();
+    return;
+  }
 
 //validate email
   usernameValidator(value) {
@@ -84,7 +82,7 @@ class SignInController extends GetxController {
               value.toString().toLowerCase(),
         )
         .toList();
-    if (s.isEmpty) {
+    if (s.length == 0) {
       addError(error: ErrorText.kusernameNullError);
       return "";
     }

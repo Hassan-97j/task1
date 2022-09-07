@@ -61,9 +61,11 @@ class SignInView extends StatelessWidget with BaseController {
                       MyTextField(
                         textfieldctrlr: signInController.emailController,
                         inputtype: TextInputType.name,
-                        // onsaved: (newValue) =>
-                        //     signInController.email = newValue,
-                        // onchanged: (value) {},
+                        onsaved: (newValue) =>
+                            signInController.email = newValue,
+                        onchanged: (value) {
+                          signInController.onEmailChange(value);
+                        },
                         validation: (value) {
                           return signInController.usernameValidator(value);
                         },
@@ -77,9 +79,9 @@ class SignInView extends StatelessWidget with BaseController {
                         obscuretext: true,
                         onsaved: (newValue) =>
                             signInController.password = newValue,
-                        // onchanged: (value) {
-                        //   signInController.onEmailChange(value);
-                        // },
+                        onchanged: (value) {
+                          signInController.onPasswordChange(value);
+                        },
                         validation: (value) {
                           return signInController.passwordValidator(value);
                         },
