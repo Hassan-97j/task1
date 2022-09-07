@@ -82,7 +82,7 @@ class SignInController extends GetxController {
               value.toString().toLowerCase(),
         )
         .toList();
-    if (s.length == 0) {
+    if (s.isEmpty) {
       addError(error: ErrorText.kusernameNullError);
       return "";
     }
