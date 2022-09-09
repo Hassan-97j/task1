@@ -5,10 +5,10 @@ import 'package:task1/customwidgets/formerror.dart';
 import 'package:task1/customwidgets/mybutton.dart';
 import 'package:task1/helper/keyboardhelper.dart';
 import 'package:task1/routes/pages.dart';
-import 'package:task1/screens/login/logincontroller.dart';
+import 'package:task1/screens/login/logincontroller/logincontroller.dart';
 import 'package:task1/sizeconfig/sizes.dart';
 
-import '../../customwidgets/mytextfield.dart';
+import '../../../customwidgets/mytextfield.dart';
 
 // ignore: must_be_immutable
 class SignInView extends StatelessWidget {

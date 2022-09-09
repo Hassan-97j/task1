@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task1/routes/pages.dart';
-import 'package:task1/screens/splash/splashcontroller.dart';
+import 'package:task1/screens/splash/splashcontroller/splashcontroller.dart';
 import 'package:task1/sizeconfig/sizes.dart';
 
 // ignore: must_be_immutable

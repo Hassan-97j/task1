@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task1/screens/posts/postcontroller.dart';
+import 'package:task1/screens/posts/postcontrller/postcontroller.dart';
 import 'package:task1/sizeconfig/sizes.dart';
 
 // ignore: must_be_immutable

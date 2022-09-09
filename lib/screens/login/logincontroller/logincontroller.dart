@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task1/const/errorconst.dart';
 import 'package:task1/models/usermodel.dart';
-import 'package:task1/screens/posts/postcontroller.dart';
+import 'package:task1/screens/posts/postcontrller/postcontroller.dart';
 
 class SignInController extends GetxController {
   TextEditingController emailController = TextEditingController();

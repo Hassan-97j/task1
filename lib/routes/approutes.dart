@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:task1/bindings/postsbinding.dart';
-import 'package:task1/bindings/signinbinding.dart';
-import 'package:task1/bindings/splashbinding.dart';
+import 'package:task1/screens/posts/postbinding/postsbinding.dart';
+import 'package:task1/screens/login/loginbinding/signinbinding.dart';
+import 'package:task1/screens/splash/splashbinding/splashbinding.dart';
 import 'package:task1/routes/pages.dart';
-import 'package:task1/screens/login/loginview.dart';
+import 'package:task1/screens/login/loginview/loginview.dart';
 import 'package:task1/screens/posts/postviews/postview.dart';
-import 'package:task1/screens/splash/splashview.dart';
+import 'package:task1/screens/splash/splashview/splashview.dart';
 
 appRoutes() => [
       //splash

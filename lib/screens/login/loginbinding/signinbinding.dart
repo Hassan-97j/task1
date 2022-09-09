@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:task1/screens/login/logincontroller.dart';
-import 'package:task1/screens/posts/postcontroller.dart';
+import 'package:task1/screens/login/logincontroller/logincontroller.dart';
+import 'package:task1/screens/posts/postcontrller/postcontroller.dart';
 
 class SignInBinding implements Bindings {
   @override
