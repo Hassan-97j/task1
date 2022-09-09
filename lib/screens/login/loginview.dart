@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:task1/basecontroller/basecontroller.dart';
 import 'package:task1/customwidgets/formerror.dart';
 import 'package:task1/customwidgets/mybutton.dart';
 import 'package:task1/helper/keyboardhelper.dart';
@@ -12,12 +11,13 @@ import 'package:task1/sizeconfig/sizes.dart';
 import '../../customwidgets/mytextfield.dart';
 
 // ignore: must_be_immutable
-class SignInView extends StatelessWidget with BaseController {
+class SignInView extends StatelessWidget {
   static String routeName = Pages.signin;
-  SignInView({Key? key}) : super(key: key);
+  const SignInView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.find<SignInController>();
     SizeConfig().init(context);
     return Scaffold(
       body: Padding(
@@ -55,19 +55,21 @@ class SignInView extends StatelessWidget with BaseController {
                 init: SignInController(),
                 initState: (_) {},
                 builder: (_) => Form(
-                  key: signInController.formKey,
+                  key: Get.find<SignInController>().formKey,
                   child: Column(
                     children: [
                       MyTextField(
-                        textfieldctrlr: signInController.emailController,
+                        textfieldctrlr:
+                           controller.emailController,
                         inputtype: TextInputType.name,
                         onsaved: (newValue) =>
-                            signInController.email = newValue,
+                            controller.email = newValue,
                         onchanged: (value) {
-                          signInController.onEmailChange(value);
+                          controller.onEmailChange(value);
                         },
                         validation: (value) {
-                          return signInController.usernameValidator(value);
+                          return controller
+                              .usernameValidator(value);
                         },
                         labeltext: 'Username',
                         hinttext: 'Enter Username',
@@ -78,26 +80,26 @@ class SignInView extends StatelessWidget with BaseController {
                         inputtype: TextInputType.visiblePassword,
                         obscuretext: true,
                         onsaved: (newValue) =>
-                            signInController.password = newValue,
+                           controller.password = newValue,
                         onchanged: (value) {
-                          signInController.onPasswordChange(value);
+                         controller.onPasswordChange(value);
                         },
                         validation: (value) {
-                          return signInController.passwordValidator(value);
+                          return controller.passwordValidator(value);
                         },
                         labeltext: 'Password',
                         hinttext: 'Enter Password',
                         icons: Icons.password,
                       ),
                       SizedBox(height: getProportionateScreenHeight(30)),
-                      FormError(errors: signInController.errors),
+                      FormError(errors:controller.errors),
                       SizedBox(height: getProportionateScreenHeight(20)),
                       DefaultElevatedButton(
                         text: 'Sign In',
                         press: () {
-                          if (signInController.formKey.currentState!
+                          if (controller.formKey.currentState!
                               .validate()) {
-                            signInController.formKey.currentState!.save();
+                            controller.formKey.currentState!.save();
                             KeyboardUtil.hideKeyboard(context);
                             Get.toNamed(PagesNames.homescreen);
                           }

@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:task1/bindings/postsbinding.dart';
+import 'package:task1/bindings/signinbinding.dart';
+import 'package:task1/bindings/splashbinding.dart';
 import 'package:task1/routes/pages.dart';
 import 'package:task1/screens/login/loginview.dart';
 import 'package:task1/screens/posts/postviews/postview.dart';
@@ -8,7 +11,8 @@ appRoutes() => [
       //splash
       GetPage(
         name: PagesNames.splashscreen,
-        page: () => SplashView(),
+        page: () => const SplashView(),
+        binding: SplashBinding(),
         transition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
       ),
@@ -16,8 +20,9 @@ appRoutes() => [
       //  sign in screen
       GetPage(
         name: PagesNames.signinscreen,
-        page: () => SignInView(),
+        page: () => const SignInView(),
         middlewares: [MyMiddelware()],
+        binding: SignInBinding(),
         transition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
       ),
@@ -25,29 +30,13 @@ appRoutes() => [
       GetPage(
         name: PagesNames.homescreen,
         page: () => const HomeView(),
+        binding: PostBinding(),
         middlewares: [MyMiddelware()],
         transition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(
           milliseconds: 500,
         ),
       ),
-      //detail screen
-      // GetPage(
-      //   name: PagesNames.detailscreen,
-      //   page: () => MyDetailView(),
-      //   middlewares: [MyMiddelware()],
-      //   transition: Transition.leftToRightWithFade,
-      //   transitionDuration: const Duration(milliseconds: 500),
-      // ),
-
-      // my account screen
-      // GetPage(
-      //   name: PagesNames.myaccountscreen,
-      //   page: () => MyAccountView(),
-      //   middlewares: [MyMiddelware()],
-      //   transition: Transition.leftToRightWithFade,
-      //   transitionDuration: const Duration(milliseconds: 500),
-      // ),
     ];
 
 class MyMiddelware extends GetMiddleware {

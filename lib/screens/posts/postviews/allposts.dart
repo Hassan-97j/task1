@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task1/basecontroller/basecontroller.dart';
 import 'package:task1/screens/posts/postcontroller.dart';
 import 'package:task1/sizeconfig/sizes.dart';
 
 // ignore: must_be_immutable
-class AllPosts extends StatelessWidget with BaseController {
-  AllPosts({Key? key}) : super(key: key);
+class AllPosts extends StatelessWidget {
+  const AllPosts({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var postController = Get.find<PostController>();
     return Scaffold(
       body: Padding(
         padding:

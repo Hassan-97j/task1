@@ -2,18 +2,18 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task1/basecontroller/basecontroller.dart';
 import 'package:task1/routes/pages.dart';
 import 'package:task1/screens/splash/splashcontroller.dart';
 import 'package:task1/sizeconfig/sizes.dart';
 
 // ignore: must_be_immutable
-class SplashView extends StatelessWidget with BaseController {
+class SplashView extends StatelessWidget {
   static String routeName = Pages.splash;
-  SplashView({Key? key}) : super(key: key);
+  const SplashView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var splashController = Get.find<SplashController>();
     SizeConfig().init(context);
     return GetBuilder<SplashController>(
         init: SplashController(),

@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task1/basecontroller/basecontroller.dart';
+
 import 'package:task1/customwidgets/profilecard.dart';
 import 'package:task1/screens/posts/postcontroller.dart';
 import 'package:task1/sizeconfig/sizes.dart';
 
 // ignore: must_be_immutable
-class Profile extends StatelessWidget with BaseController {
-  Profile({Key? key}) : super(key: key);
+class Profile extends StatelessWidget {
+  const Profile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var postController = Get.find<PostController>();
     return Scaffold(
       body: GetBuilder<PostController>(
         init: PostController(),
