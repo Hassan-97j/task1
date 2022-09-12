@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:task1/routes/pages.dart';
 import 'package:task1/screens/posts/postviews/allposts.dart';
 import 'package:task1/screens/posts/postviews/profile.dart';
-
-import '../../../sizeconfig/sizes.dart';
+import 'package:task1/sizeconfig/sizes.dart';
 
 class HomeView extends StatelessWidget {
   static String routeName = Pages.home;

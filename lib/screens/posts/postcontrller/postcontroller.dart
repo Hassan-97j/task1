@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:http/http.dart' show get;
 import 'package:task1/config/urls.dart';
@@ -17,14 +16,15 @@ class PostController extends GetxController {
   List userModels = <Users>[];
   var isloading = true;
   Posts posts = Posts();
+  //////////
   @override
   void onInit() {
     getPosts();
-
     getUsers();
     super.onInit();
   }
 
+//////////
   Future<void> getPosts() async {
     final response = await get(Uri.parse(myposturl));
     print("HttpStatus: waiting");
@@ -44,6 +44,7 @@ class PostController extends GetxController {
     update(['textId']); //GetX için
   }
 
+///////////
   Future<void> getUsers() async {
     final response = await get(Uri.parse(myuserurl));
     print("HttpStatus: waiting");
