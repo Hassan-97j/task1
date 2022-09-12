@@ -16,9 +16,11 @@ class PostController extends GetxController {
   List postModels = <Posts>[];
   List userModels = <Users>[];
   var isloading = true;
+  Posts posts = Posts();
   @override
   void onInit() {
     getPosts();
+
     getUsers();
     super.onInit();
   }
