@@ -20,7 +20,7 @@ class AllPosts extends StatelessWidget {
           initState: (_) {},
           builder: (_) => postController.isloading
               ? postController.postModels.isEmpty
-                  ? Center(child: Text('no data'))
+                  ? const Center(child: Text('no data'))
                   : ListView.builder(
                       itemCount: postController.postModels.length,
                       itemBuilder: (BuildContext context, int index) {
