@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:http/http.dart' show get;
 import 'package:task1/config/urls.dart';
@@ -29,7 +28,6 @@ class PostController extends GetxController {
 
     switch (response.statusCode) {
       case HttpStatus.ok:
-        
         print("HttpStatus: OK");
         final jsonBody = jsonDecode(response.body);
         if (jsonBody is List) {

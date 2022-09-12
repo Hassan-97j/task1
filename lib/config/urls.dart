@@ -5,4 +5,9 @@ class Config {
   static String posturl = '/posts';
   //post Url
   static String userurl = '/users';
+  //////////////
+  // receiveTimeout
+  static const int receiveTimeout = 15000;
+  // connectTimeout
+  static const int connectionTimeout = 15000;
 }
